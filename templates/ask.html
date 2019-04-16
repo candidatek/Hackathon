@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+
+    <script type="text/javascript">
+      function callserver(){
+      var ask = document.getElementById("ask");
+      console.log(ask.value);
+      var url = 'http://127.0.0.1:5000/ask';
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+         var js = JSON.parse(this.responseText);
+         console.log(js);
+         var print = "";
+
+         print += "<h1><br>Scholar Id = </h1>" +js[0];
+          print += "<br>Guide Id = " +js[1];
+           print += "<br>Name = " +js[2];
+            print += "<br>Username = " +js[3];
+             print += "<br>Viva Status = " +js[4]+"ED";
+
+         document.getElementById("but").innerHTML=print;
+       }
+
+     };
+    xhttp.open("GET",  url + "?search="  , true);
+    xhttp.send();
+    }
+    </script>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="but">
+      <input type="button" name="ask" id = "ask" onclick="callserver()" value="ASK FOR VIVA">
+          </div>
+
+  </body>
+</html>

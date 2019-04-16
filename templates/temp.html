@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Contact V4</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="{{url_for('static',filename='images2/icons/favicon.ico')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='vendor2/bootstrap/css/bootstrap.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='fonts2/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='vendor2/animate/animate.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='vendor2/css-hamburgers/hamburgers.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='vendor2/select2/select2.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css2/util.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css2/main.css')}}">
+
+	<script type="text/javascript">
+		function callserver(){
+		var ask = document.getElementById("ask");
+		console.log(ask.value);
+		var url = 'http://127.0.0.1:5000/ask';
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			 var js = JSON.parse(this.responseText);
+			 console.log(js);
+			 var print = "";
+
+			 print += "<h1><br>Scholar Id = </h1>" +js[0];
+				print += "<br>Guide Id = " +js[1];
+				 print += "<br>Name = " +js[2];
+					print += "<br>Username = " +js[3];
+					 print += "<br>Viva Status = " +js[4]+"ED";
+
+			 document.getElementById("but").innerHTML=print;
+		 }
+
+	 };
+	xhttp.open("GET",  url + "?search="  , true);
+	xhttp.send();
+	}
+	</script>
+
+	<script type="text/javascript">
+
+function txtbox(){
+	document.getElementById("but").innerHTML = "<textarea name='comment' form='usrform'>Progress : </textarea> ";
+}
+
+	</script>
+</head>
+<body>
+
+
+	<div class="container-contact100"  >
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form">
+				<span class="contact100-form-title">
+				Welcome
+				</span>
+
+<div id="but">
+	<div class="container-contact100-form-btn">
+		<div class="wrap-contact100-form-btn">
+			<div class="contact100-form-bgbtn"></div>
+			<button class="contact100-form-btn" id = "addprog" onclick="txtbox()">
+				<span>
+					Add Progress
+					<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+				</span>
+			</button>
+		</div>
+	</div></div>
+	<br> <p>
+		<span>
+			<div class="wrap-contact100-form-btn">
+				<div class="contact100-form-bgbtn"></div>
+				<!-- <button class="contact100-form-btn" id="ask" value="ASK FOR VIVA" name="ask" onclick="callserver()" > -->
+					<span>
+						 <input type="button" class="contact100-form-btn" name="ask" id = "ask" onclick="callserver()" value="ASK FOR VIVA">
+						<!-- <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i> -->
+					</span>
+				<!-- </button> -->
+
+			</div>
+		</span>
+	</p>
+
+
+
+</form>
+</div>
+</div>
+
+</div>
+
+
+
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
+</body>
+</html>
